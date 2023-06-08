@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from . import final
 
+def home_view(request):
+    template = 'common/home.html'
+    context = {}
+    return render(request,template,context)
 # Create your views here.
 def sentiment(request):
     res = ""

@@ -2,6 +2,7 @@ import nltk, re, string
 from nltk.corpus import stopwords
 import numpy as np
 import pickle
+nltk.download('stopwords')
 
 with open('polls/freqs.pickle', 'rb') as handle:
     freqs = pickle.load(handle)

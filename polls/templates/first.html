@@ -1,23 +1,57 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sentiment Show</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Sentiment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Core theme CSS (includes Bootstrap)-->
+
 </head>
+
 <body>
-<form method="post" action="{% url 'homepage' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'homepage' %}" enctype="multipart/form-data" class="form">
         {% csrf_token %}
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default"><h2>Write a sentence</h2></span>
-        <input name="text data" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <div class="card-header text-center">
+            <h3 class="card-title title-up">Write a Sentence</h3>
+        </div>
+        <div class="card-body">
+            <div class="input-group no-border">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="now-ui-icons users_circle-08"></i>
+                    </span>
+                </div>
+                <input name="text data" type="text" class="form-control" placeholder="Sentence here">
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button type="submit" name="pred_button" value="Save&Next"
+                class="btn btn-neutral btn-round btn-lg">Confirm</a>
+        </div>
+    </form>
+    <div class="card-body">
+        <div class="input-group no-border">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="now-ui-icons users_circle-08"></i>
+                </span>
+            </div>
+            {% if result %}
+             <ul>
+                <li> The sentiment of the above sentence is: {{ result }} </li>
+             </ul>
+            {% endif %}
+        </div>
     </div>
-    <br>
-    <div class="col-auto">
-        <button type="submit" name="pred_button" value="Save&Next">Confirm Submission</button>
-    </div>
-</form>
-{% if result %}
-<h2>The sentiment of the above sentence is: {{ result }}</h2>
-{% endif %}
+
+    
 </body>
+
 </html>
